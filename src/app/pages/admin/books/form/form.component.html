@@ -1,0 +1,59 @@
+<header class="bg-white shadow">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ bookId ? 'Edit Book': 'Create Book' }}</h1>
+  </div>
+</header>
+<main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="w-full max-w-full px-3 mb-6 sm:flex-none xl:mb-0">
+      <form [formGroup]="bookFrom" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" formControlName="name" autocomplete="name" required
+            class="relative block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Enter book name" [ngClass]="{'ring-red-400': frm.name.touched && frm.name.errors}">
+          <ng-container *ngIf="frm.name.touched && frm.name.errors">
+            <p class="text-red-500 text-xs italic" *ngIf="frm.name.errors.required">Please enter name</p>
+          </ng-container>
+        </div>
+        <div class="mb-4">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" formControlName="author" autocomplete="author" required
+            class="relative block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Enter author name" [ngClass]="{'ring-red-400': frm.author.touched && frm.author.errors}">
+          <ng-container *ngIf="frm.author.touched && frm.author.errors">
+            <p class="text-red-500 text-xs italic" *ngIf="frm.name.errors?.required">Please enter author name</p>
+          </ng-container>
+        </div>
+        <div class="mb-4">
+          <label for="price">Price</label>
+          <input type="text" id="price" name="price" formControlName="price" autocomplete="price" required
+            class="relative block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Enter book price" [ngClass]="{'ring-red-400': frm.price.touched && frm.price.errors}">
+          <ng-container *ngIf="frm.price.touched && frm.price.errors">
+            <p class="text-red-500 text-xs italic" *ngIf="frm.name.errors?.required">Please enter book price</p>
+          </ng-container>
+        </div>
+        <div class="mb-4">
+          <label for="price">Description</label>
+          <textarea name="" id="" cols="30" rows="10" formControlName="description" required
+            class="relative block w-full rounded-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Enter book description"
+            [ngClass]="{'ring-red-400': frm.description.touched && frm.description.errors}"></textarea>
+          <ng-container *ngIf="frm.description.touched && frm.description.errors">
+            <p class="text-red-500 text-xs italic" *ngIf="frm.name.errors?.required">Please enter book description</p>
+          </ng-container>
+        </div>
+        <div class="flex">
+          <button type="button" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded mr-2"
+            (click)="back()">Cancel</button>
+          <button type="submit"
+            class="flex justify-center ml-2 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <span *ngIf="isLoading">{{ bookId ? 'Updating': 'Creating' }}</span>
+            <span *ngIf="!isLoading">{{ bookId ? 'Update': 'Create' }}</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

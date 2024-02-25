@@ -1,0 +1,52 @@
+<header class="bg-white shadow">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">Book - {{ bookDetail.data.name }}</h1>
+  </div>
+</header>
+<main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="w-full max-w-full px-3 mb-6 sm:flex-none xl:mb-0">
+      <ng-template appDc></ng-template>
+      <div class="w-full flex flex-wrap mb-4">
+        <div class="order-2 md:order-1 md:w-8/12 pl-2 pr-4">
+          <div class="flex mb-4">
+            <span class="min-w-[144px] w-36 md:w-32 md:min-w-[128px] font-semibold">
+              Name
+            </span>
+            <span class="mr-4">:</span>
+            <p>{{ bookDetail.data.name }}</p>
+          </div>
+          <div class="flex mb-4 gap-y-2 items-center flex-wrap">
+            <span class="min-w-[144px] w-36 md:w-32 md:min-w-[128px] font-semibold">
+              Author
+            </span>
+            <span class="mr-4">:</span>
+            <p>{{ bookDetail.data.author }}</p>
+          </div>
+          <div class="flex mb-4 gap-y-2 items-center flex-wrap">
+            <span class="min-w-[144px] w-36 md:w-32 md:min-w-[128px] font-semibold">
+              Price
+            </span>
+            <span class="mr-4">:</span>
+            <p>{{ bookDetail.data.price | currency }}</p>
+          </div>
+          <div class="flex mb-4 gap-y-2 items-center flex-wrap">
+            <span class="min-w-[144px] w-36 md:w-32 md:min-w-[128px] font-semibold">
+              Description
+            </span>
+            <span class="mr-4">:</span>
+            <p class="mt-2" [innerHTML]="bookDetail.data.description | nl2br"></p>
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+        <button type="button" class="px-4 py-2 text-white bg-gray-500 hover:bg-gray-400 rounded mr-2"
+          (click)="back()">Back</button>
+        <button type="button" class="px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-500 rounded mr-2"
+          (click)="edit()">Edit</button>
+        <button type="button" class="px-4 py-2 text-white bg-red-600 hover:bg-red-500 rounded mr-2"
+          (click)="delete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</main>
